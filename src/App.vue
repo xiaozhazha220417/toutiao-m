@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div id="app">
+    <h1>黑马头条</h1>
+    <router-link></router-link>
+  </div>
 </template>
 
 <script>
