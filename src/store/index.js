@@ -17,7 +17,7 @@ export default new Vuex.Store({
     setUser (state, user) {
       state.user = user
       // 保存本地数据
-      setItem(TOKEN)
+      setItem(TOKEN, state.user)
     }
   },
   actions: {},

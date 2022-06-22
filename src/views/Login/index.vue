@@ -1,7 +1,11 @@
 <template>
   <div class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" title="登录" />
+    <van-nav-bar class="page-nav-bar" title="登录">
+      <template #left>
+        <van-icon name="cross" @click="$router.back()" />
+      </template>
+    </van-nav-bar>
     <!-- /导航栏 -->
 
     <!--
@@ -49,7 +53,7 @@
           <template #button>
             <van-count-down
               v-if="isCountDownShow"
-              :time="1000 * 5"
+              :time="1000 * 60"
               format="ss 秒"
               @finish="isCountDownShow = false"
             />
@@ -136,9 +140,9 @@ export default {
         // console.log(res);
         // console.log(res.data.data);
         this.$store.commit('setUser', data.data)
-
         // 提示 success 或者 fail 的时候，会先把其它的 toast 先清除
         this.$toast.success('登录成功')
+        this.$router.push('/my')
       } catch (err) {
         if (err.response.status === 400) {
           this.$toast.fail('手机号或验证码错误')
